@@ -24,7 +24,7 @@ requirements:
             - "A list of tickets is displayed"
       - id: "AC-002"
         statement: "There is a New Ticket button that opens a modal for creating new tickets"
-        passed: false
+        passed: true
         verification:
           type: "test"
           steps:
