@@ -53,13 +53,52 @@
 
 	// Modal state
 	let showModal = false;
+	let newTicketTitle = '';
+	let newTicketDescription = '';
+	let newTicketAcceptanceCriteria = '';
 
 	function openModal() {
 		showModal = true;
+		// Reset form fields
+		newTicketTitle = '';
+		newTicketDescription = '';
+		newTicketAcceptanceCriteria = '';
 	}
 
 	function closeModal() {
 		showModal = false;
+	}
+
+	function createTicket() {
+		// Validate required fields
+		if (!newTicketTitle.trim() || !newTicketDescription.trim() || !newTicketAcceptanceCriteria.trim()) {
+			alert('Please fill in all required fields');
+			return;
+		}
+
+		// Parse acceptance criteria (one per line)
+		const acLines = newTicketAcceptanceCriteria.trim().split('\n').filter(line => line.trim());
+		const acceptanceCriteria = acLines.map((description, index) => ({
+			id: tickets.length * 10 + index + 1, // Simple ID generation
+			description: description.trim(),
+			status: 'PENDING' // Default status for new ACs
+		}));
+
+		// Create new ticket
+		const newTicket = {
+			id: tickets.length + 1,
+			title: newTicketTitle.trim(),
+			description: newTicketDescription.trim(),
+			status: 'Backlog',
+			acceptanceCriteria,
+			createdAt: new Date().toISOString().split('T')[0] // YYYY-MM-DD format
+		};
+
+		// Add to tickets array
+		tickets.push(newTicket);
+
+		// Close modal
+		closeModal();
 	}
 </script>
 
@@ -166,33 +205,38 @@
 					<div class="space-y-4">
 						<div>
 							<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-								Title
+								Title <span class="text-red-500">*</span>
 							</label>
 							<input 
 								type="text" 
+								bind:value={newTicketTitle}
 								class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 								placeholder="Enter ticket title"
 							/>
 						</div>
 						<div>
 							<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-								Description
+								Description <span class="text-red-500">*</span>
 							</label>
 							<textarea 
+								bind:value={newTicketDescription}
 								class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 								rows="3"
 								placeholder="Enter ticket description"
 							></textarea>
+							<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">This field is required</p>
 						</div>
 						<div>
 							<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-								Acceptance Criteria (one per line)
+								Acceptance Criteria (one per line) <span class="text-red-500">*</span>
 							</label>
 							<textarea 
+								bind:value={newTicketAcceptanceCriteria}
 								class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 								rows="4"
 								placeholder="Enter acceptance criteria, one per line"
 							></textarea>
+							<p class="mt-1 text-xs text-gray-500 dark:text-gray-400">This field is required</p>
 						</div>
 					</div>
 
@@ -205,6 +249,7 @@
 							Cancel
 						</button>
 						<button 
+							on:click={createTicket}
 							class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
 						>
 							Create Ticket
