@@ -5,7 +5,7 @@ set -e
 # Read the full contents of SYSTEM_PROMPT.md so Cline receives the actual prompt text
 SYSTEM_PROMPT="$(cat SYSTEM_PROMPT.md)"
 
-while true; doº
+while true; do
     echo "=== Ralph Loop cycle started ==="
 
     # Force kill any lingering cline processes to avoid accumulation/hangs
