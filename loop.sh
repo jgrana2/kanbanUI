@@ -6,7 +6,7 @@ set -e
 SYSTEM_PROMPT="$(cat SYSTEM_PROMPT.md)"
 
 while true; do
-    echo "=== Ralph Loop cycle started ==="
+    echo "=== Loop cycle started ==="
 
     # Force kill any lingering cline processes to avoid accumulation/hangs
     pkill -f "cline-core.js" || true
