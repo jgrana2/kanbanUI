@@ -14,7 +14,7 @@ requirements:
     acceptance_criteria:
       - id: "AC-001"
         statement: "The application displays a Backlog view with a list of all tickets"
-        passed: false
+        passed: true
         verification:
           type: "test"
           steps:
