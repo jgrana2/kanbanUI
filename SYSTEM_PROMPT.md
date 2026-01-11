@@ -132,6 +132,38 @@ After the Pull Request is approved and ready to merge:
 4. Commit this change: chore(prd): mark REQ-XXX AC-YYY passed
 5. Push the commit to the same Pull Request branch.
 
+---
+
+## Progress Artifacts (Mandatory)
+
+This repo uses a two-tier progress log to avoid truncation/corruption in agent runs.
+
+### progress.md (Index)
+
+Purpose:
+- A short, human-readable index of recent cycles.
+- Must remain small so agents can update it reliably.
+
+Rules:
+- Must be updated in every loop iteration.
+- Keep it short (target: < ~80 lines).
+- It is OK to rewrite this *index* as needed.
+- Never attempt to copy the full historical log into this file.
+- Must end with the exact sentinel line: `<!-- PROGRESS_EOF -->`.
+
+### progress/cycles/<cycle-file>.md (Per-cycle log)
+
+Purpose:
+- The full, detailed log for exactly one cycle.
+
+Rules:
+- Create exactly one new file per loop cycle.
+- Never edit or rewrite prior cycle files.
+- File name format (local time): `progress/cycles/YYYY-MM-DD_HHMM_AC-<n>.md`
+- Each cycle file must end with the exact sentinel line: `<!-- CYCLE_EOF -->`.
+
+---
+
 ## Behavioral Constraints
 
 - Never ask questions.
