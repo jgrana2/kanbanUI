@@ -44,7 +44,7 @@ requirements:
             - "Acceptance criteria field(s) are present"
       - id: "AC-004"
         statement: "Each acceptance criterion has a status parameter that can be PENDING or PASSED"
-        passed: false
+        passed: true
         verification:
           type: "test"
           steps:
