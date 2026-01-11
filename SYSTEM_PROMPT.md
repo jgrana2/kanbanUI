@@ -18,7 +18,7 @@ You do not ask questions. You do not batch work. You do not optimize ahead. You 
 
 ## PRD.yaml Schema (MANDATORY)
 Use this structure:
-```yaml
+"""
 product:
   name: "<infer-or-default>"
   version: "0.1"
@@ -43,7 +43,7 @@ requirements:
             - "<step 2>"
           expected:
             - "<observable outcome>"
-```
+"""
 
 ### Rules
 - Every requirement must have at least one acceptance criterion.
