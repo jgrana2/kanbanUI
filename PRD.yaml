@@ -1,0 +1,246 @@
+product:
+  name: "KanbanUI"
+  version: "0.1"
+
+inputs:
+  source: "requirements.md"
+  generated_at: "2026-01-11T21:59:00Z"
+
+requirements:
+  - id: "REQ-001"
+    title: "Backlog View with Ticket Creation"
+    description: "A web application with a Backlog view where all tickets/sticker notes are created. This is a list view with all tickets created. Each ticket corresponds to a User Story created by the user in free writing natural language. There is a New Ticket button to create a new one and a modal opens with ticket information. Mandatory fields: description and acceptance criteria (ACs). Each AC has a status parameter which can be PENDING or PASSED."
+    priority: "P0"
+    acceptance_criteria:
+      - id: "AC-001"
+        statement: "The application displays a Backlog view with a list of all tickets"
+        passed: true
+        verification:
+          type: "test"
+          steps:
+            - "Start the application"
+            - "Navigate to the Backlog view"
+          expected:
+            - "A list of tickets is displayed"
+      - id: "AC-002"
+        statement: "There is a New Ticket button that opens a modal for creating new tickets"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Click the New Ticket button"
+          expected:
+            - "A modal opens with form fields for ticket creation"
+      - id: "AC-003"
+        statement: "The ticket creation modal has mandatory description and acceptance criteria fields"
+        passed: true
+        verification:
+          type: "test"
+          steps:
+            - "Open the ticket creation modal"
+            - "Check available form fields"
+          expected:
+            - "Description field is present"
+            - "Acceptance criteria field(s) are present"
+      - id: "AC-004"
+        statement: "Each acceptance criterion has a status parameter that can be PENDING or PASSED"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "View a ticket with acceptance criteria"
+          expected:
+            - "Each AC shows a status indicator with PENDING or PASSED state"
+
+  - id: "REQ-002"
+    title: "User Story Interpretation and Rewriting"
+    description: "The application must interpret the user's intent and rewrite the User Story in a detailed and clear one with verifiable Acceptance Criteria. The user writes what they need in free writing and the application then rewrites a clear and detailed version including verifiable and accurate criteria that must be satisfied before marked as passed."
+    priority: "P0"
+    acceptance_criteria:
+      - id: "AC-005"
+        statement: "The application interprets free-text user input and generates a detailed User Story"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Enter free-text description in ticket creation"
+            - "Submit the ticket"
+          expected:
+            - "A detailed, rewritten User Story is generated"
+      - id: "AC-006"
+        statement: "The application generates verifiable acceptance criteria from user input"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Enter free-text description in ticket creation"
+            - "Submit the ticket"
+          expected:
+            - "Verifiable acceptance criteria are generated"
+
+  - id: "REQ-003"
+    title: "Sprint Management"
+    description: "In the Backlog list view, the user is able to select one or more tickets with checkboxes and add them to a Sprint, which is a timeframe where the feature or fix is implemented in code and verified. The Sprint length is the time it takes to complete all the tickets in that sprint with all ACs passed. The user can then select multiple backlog items and add them to a Sprint or drag and drop them in the desired Sprint. There is a Start Sprint button that marks the beginning of working on the tickets in the Sprint."
+    priority: "P1"
+    acceptance_criteria:
+      - id: "AC-007"
+        statement: "Tickets in Backlog view have checkboxes for selection"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "View the Backlog"
+          expected:
+            - "Each ticket has a checkbox"
+      - id: "AC-008"
+        statement: "Selected tickets can be added to a Sprint"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Select one or more tickets"
+            - "Click 'Add to Sprint'"
+          expected:
+            - "Tickets are moved to a Sprint"
+      - id: "AC-009"
+        statement: "Tickets can be drag-and-dropped into Sprints"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Drag a ticket to a Sprint area"
+          expected:
+            - "Ticket is moved to the Sprint"
+
+  - id: "REQ-004"
+    title: "Sprint Execution Workflow"
+    description: "This work is done by a bash loop which will be included manually. For code you just call an API to start working on the Sprint. Then when the Sprint is finished, the results are displayed on another summary page or panel in the application. The way the loop works is as it is working in this current project where you are, which is ./loop.sh and SYSTEM_PROMPT.md."
+    priority: "P1"
+    acceptance_criteria:
+      - id: "AC-010"
+        statement: "There is a Start Sprint button that initiates the sprint workflow"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Click Start Sprint button"
+          expected:
+            - "Sprint execution begins"
+      - id: "AC-011"
+        statement: "Sprint results are displayed on a summary page/panel"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Complete a sprint"
+            - "Navigate to summary view"
+          expected:
+            - "Sprint results are displayed"
+
+  - id: "REQ-005"
+    title: "UI/UX Design Requirements"
+    description: "Use Shadcn dark themes and sleek design with microanimations and interactivity with hover mouse and so on. The application has a clean and minimalistic UI with drag and drop items and easy and intuitive use."
+    priority: "P2"
+    acceptance_criteria:
+      - id: "AC-012"
+        statement: "Application uses Shadcn dark theme"
+        passed: false
+        verification:
+          type: "manual"
+          steps:
+            - "Inspect the application UI"
+          expected:
+            - "Dark theme is applied consistently"
+      - id: "AC-013"
+        statement: "UI has microanimations and hover interactions"
+        passed: false
+        verification:
+          type: "manual"
+          steps:
+            - "Hover over interactive elements"
+          expected:
+            - "Smooth animations and visual feedback"
+
+  - id: "REQ-006"
+    title: "User Management"
+    description: "Add basic user management with JWT."
+    priority: "P2"
+    acceptance_criteria:
+      - id: "AC-014"
+        statement: "Users can register and login"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Navigate to registration page"
+            - "Create an account"
+            - "Login with credentials"
+          expected:
+            - "Registration succeeds"
+            - "Login succeeds with JWT token"
+
+  - id: "REQ-007"
+    title: "Landing Page"
+    description: "Add a minimalistic landing page."
+    priority: "P3"
+    acceptance_criteria:
+      - id: "AC-015"
+        statement: "Application has a landing page"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Access the root URL"
+          expected:
+            - "A minimalistic landing page is displayed"
+
+  - id: "REQ-008"
+    title: "External API Integration"
+    description: "Access GitHub using GITHUB_TOKEN. Use the Google Custom Search API using GOOGLE_CSE_ID and GOOGLE_API_KEY in case you want to search the web."
+    priority: "P3"
+    acceptance_criteria:
+      - id: "AC-016"
+        statement: "Application can access GitHub API with GITHUB_TOKEN"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Configure GITHUB_TOKEN"
+            - "Make a GitHub API request"
+          expected:
+            - "GitHub API responds successfully"
+      - id: "AC-017"
+        statement: "Application can use Google Custom Search API"
+        passed: false
+        verification:
+          type: "test"
+          steps:
+            - "Configure GOOGLE_CSE_ID and GOOGLE_API_KEY"
+            - "Make a search request"
+          expected:
+            - "Search results are returned"
+
+  - id: "REQ-009"
+    title: "Delivery Requirements"
+    description: "The application is delivered tested and running for the user to try on localhost."
+    priority: "P0"
+    acceptance_criteria:
+      - id: "AC-018"
+        statement: "Application runs on localhost"
+        passed: false
+        verification:
+          type: "command"
+          steps:
+            - "Start the application"
+            - "Access http://localhost:3000"
+          expected:
+            - "Application is accessible"
+      - id: "AC-019"
+        statement: "Application is tested"
+        passed: false
+        verification:
+          type: "command"
+          steps:
+            - "Run test suite"
+          expected:
+            - "All tests pass"

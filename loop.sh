@@ -5,8 +5,8 @@ set -e
 # Read the full contents of SYSTEM_PROMPT.md so Cline receives the actual prompt text
 SYSTEM_PROMPT="$(cat SYSTEM_PROMPT.md)"
 
-while true; doº
-    echo "=== Ralph Loop cycle started ==="
+while true; do
+    echo "=== Loop cycle started ==="
 
     # Force kill any lingering cline processes to avoid accumulation/hangs
     pkill -f "cline-core.js" || true
