@@ -33,7 +33,7 @@ requirements:
             - "A modal opens with form fields for ticket creation"
       - id: "AC-003"
         statement: "The ticket creation modal has mandatory description and acceptance criteria fields"
-        passed: false
+        passed: true
         verification:
           type: "test"
           steps:
