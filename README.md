@@ -1,38 +1,64 @@
-# sv
+# KanbanUI
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A Kanban board UI implementation.
 
-## Creating a project
+## Installation
 
-If you're seeing this, you've probably already done this step. Congrats!
+Prerequisites:
 
-```sh
-# create a new project in the current directory
-npx sv create
+- Node.js (>= 14)
+- npm or Yarn
 
-# create a new project in my-app
-npx sv create my-app
+Steps:
+
+```bash
+# clone this repository (if not already)
+git clone <repo-url> cloned-repos
+
+cd cloned-repos
+
+# install dependencies
+npm install
+# or
+yarn install
 ```
 
-## Developing
+## Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start the development server:
 
-```sh
+```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# or
+yarn dev
 ```
 
-## Building
+Open your browser at `http://localhost:3000` (port may vary depending on the project setup).
 
-To create a production version of your app:
+Common actions:
 
-```sh
-npm run build
-```
+- Create, edit and delete boards/columns
+- Add, edit, move (drag & drop) and remove tasks
+- Use local or remote persistence depending on configuration
 
-You can preview the production build with `npm run preview`.
+## Features
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- Column-based Kanban board layout
+- Drag-and-drop task ordering between columns
+- Create, edit and delete tasks and columns
+- Responsive UI for desktop and mobile
+- Simple persistence (localStorage or optional backend)
+
+## Technologies
+
+- React (or similar modern UI library)
+- JavaScript or TypeScript
+- CSS or utility-first frameworks (Tailwind CSS, etc.)
+- A bundler/dev server (Vite, webpack, Create React App, etc.)
+- Drag-and-drop library (react-beautiful-dnd, dnd-kit, or similar)
+
+## License
+
+This project is provided under the MIT License. See the `LICENSE` file for details.
+
+If you want a different license, replace the `LICENSE` file or update this section accordingly.
