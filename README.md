@@ -59,6 +59,6 @@ Common actions:
 
 ## License
 
-This project is provided under the MIT License. See the `LICENSE` file for details.
+This project is provided under the Apache License 2.0. See the `LICENSE` file for details.
 
-If you want a different license, replace the `LICENSE` file or update this section accordingly.
+If you need a different license, replace the `LICENSE` file or update this section accordingly. SPDX: `Apache-2.0`.
